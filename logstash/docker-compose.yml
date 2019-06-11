@@ -1,0 +1,11 @@
+version: '3'
+services:
+  logstash: 
+    container_name: logstash
+    build: .
+    #image: ${DOCKER_REGISTRY}/logstash:${CI_BUILD_REF}
+    image: ${DOCKER_REGISTRY}/logstash:${CI_COMMIT_REF_SLUG}
+    #image: ${DOCKER_REGISTRY}/logstash:latest
+    volumes:
+      - /home/ubuntu/docker/logstash/config:/usr/share/logstash/config/
+      - /home/ubuntu/docker/logstash/input:/usr/share/logstash/input/
